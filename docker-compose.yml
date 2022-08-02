@@ -1,0 +1,20 @@
+version: '3.2'
+services:
+  mongo:
+    image: mongo
+    restart: always
+    env_file:
+      - .configs/mongo.env
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data:/data/db
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    env_file:
+      - .configs/mongo-express.env
+    depends_on:
+      - mongo
