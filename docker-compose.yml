@@ -18,11 +18,13 @@ services:
       - .configs/mongo-express.env
     depends_on:
       - mongo
-  backend:
+  graphql-backend:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    container_name: backend
+    env_file:
+      - .configs/backend.env
+    container_name: graphql-backend
     restart: always
     ports:
       - "3000:3000"
