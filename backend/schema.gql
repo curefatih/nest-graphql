@@ -1,0 +1,106 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  _id: String!
+  email: String!
+}
+
+type LoggedUserOutput {
+  """Generated JWT token"""
+  access_token: String!
+}
+
+type MovieRating {
+  _id: String!
+  rating: Float!
+  comment: String!
+  movie: Movie!
+}
+
+type Movie {
+  _id: String!
+  name: String!
+  releaseDate: DateTime!
+  movieRatings: [MovieRating!]!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type UpdateMovieOutput {
+  _id: String!
+  name: String!
+  releaseDate: DateTime!
+}
+
+type DeleteMovieRatingOutput {
+  _id: String!
+  rating: Float!
+  comment: String!
+  movieId: String!
+}
+
+type UpdateMovieRatingOutput {
+  _id: String!
+  rating: Float!
+  comment: String!
+  movieId: String!
+}
+
+type Query {
+  users: [User!]!
+  movies: [Movie!]!
+  movie(id: ID!): Movie!
+  movieRatings: [MovieRating!]!
+}
+
+type Mutation {
+  createUser(input: CreateUserDto!): User!
+  loginUser(loginUserInput: LoginUserInput!): LoggedUserOutput!
+  createMovie(input: CreateMovieDto!): Movie!
+  updateMovie(input: UpdateMovieInput!): UpdateMovieOutput!
+  createMovieRating(input: CreateMovieRatingInput!): MovieRating!
+  updateMovieRating(input: UpdateMovieRatingInput!): UpdateMovieRatingOutput!
+  deleteMovieRating(input: DeleteMovieRatingInput!): DeleteMovieRatingOutput!
+}
+
+input CreateUserDto {
+  email: String!
+  password: String!
+}
+
+input LoginUserInput {
+  email: String!
+  password: String!
+}
+
+input CreateMovieDto {
+  name: String!
+  releaseDate: DateTime!
+}
+
+input UpdateMovieInput {
+  _id: String!
+  name: String!
+  releaseDate: DateTime!
+}
+
+input CreateMovieRatingInput {
+  rating: Float!
+  comment: String!
+  movieId: String!
+}
+
+input UpdateMovieRatingInput {
+  _id: String!
+  rating: Float!
+  comment: String!
+}
+
+input DeleteMovieRatingInput {
+  _id: String!
+}
