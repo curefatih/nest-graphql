@@ -18,3 +18,13 @@ services:
       - .configs/mongo-express.env
     depends_on:
       - mongo
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: backend
+    restart: always
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
