@@ -3,16 +3,14 @@ FROM node:16 AS builder
 WORKDIR /app
 
 COPY package.json ./
-COPY pnpm-lock.yaml ./
+COPY package-lock.json ./
 
-RUN npm install -g pnpm
-
-RUN pnpm install
+RUN npm install
 
 COPY . .
 
-RUN NODE_ENV=production pnpm run build
+RUN NODE_ENV=development npm run build
 
-EXPOSE 5000
+EXPOSE 3000
 
-CMD ["pnpm", "start"]
+CMD ["npm", "start"]
