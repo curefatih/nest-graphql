@@ -52,14 +52,14 @@ type UpdateMovieRatingOutput {
 }
 
 type Query {
-  users: [User!]!
+  users: User!
   movies: [Movie!]!
   movie(id: ID!): Movie!
   movieRatings: [MovieRating!]!
 }
 
 type Mutation {
-  createUser(input: CreateUserDto!): User!
+  createUser(input: CreateUserInput!): User!
   loginUser(loginUserInput: LoginUserInput!): LoggedUserOutput!
   createMovie(input: CreateMovieDto!): Movie!
   updateMovie(input: UpdateMovieInput!): UpdateMovieOutput!
@@ -68,7 +68,7 @@ type Mutation {
   deleteMovieRating(input: DeleteMovieRatingInput!): DeleteMovieRatingOutput!
 }
 
-input CreateUserDto {
+input CreateUserInput {
   email: String!
   password: String!
 }
