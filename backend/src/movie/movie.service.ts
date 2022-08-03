@@ -11,24 +11,18 @@ export class MovieService {
     @InjectModel(Movie.name) private movieModel: Model<MovieDocument>,
   ) {}
 
-  async createMovie(
-    ownerId: string,
-    movieDto: CreateMovieInput,
-  ): Promise<Movie> {
+  async create(ownerId: string, movieDto: CreateMovieInput): Promise<Movie> {
     const ownerObjectId = new mongoose.Types.ObjectId(ownerId);
 
-    const movie = new this.movieModel({
+    const movie = await this.movieModel.create({
       ...movieDto,
       owner: ownerObjectId,
     });
 
-    return movie.save();
+    return movie;
   }
 
-  async updateMovie(
-    ownerId: string,
-    movieDto: UpdateMovieInput,
-  ): Promise<Movie> {
+  async update(ownerId: string, movieDto: UpdateMovieInput): Promise<Movie> {
     const movie = await this.movieModel
       .findOne({
         _id: movieDto._id,

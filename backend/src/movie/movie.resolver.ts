@@ -30,7 +30,7 @@ export class MovieResolver {
     @CurrentUser() user: CurrentUserPayload,
     @Args('input') input: CreateMovieInput,
   ): Promise<Movie> {
-    return this.movieService.createMovie(user.userId, input);
+    return this.movieService.create(user.userId, input);
   }
 
   @Mutation(() => UpdateMovieOutput)
@@ -38,7 +38,7 @@ export class MovieResolver {
     @CurrentUser() user: CurrentUserPayload,
     @Args('input') input: UpdateMovieInput,
   ): Promise<Movie> {
-    return this.movieService.updateMovie(user.userId, input);
+    return this.movieService.update(user.userId, input);
   }
 
   @Query(() => [Movie])
