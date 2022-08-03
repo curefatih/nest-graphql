@@ -3,7 +3,7 @@ import { MovieService } from './movie.service';
 import { MovieResolver } from './movie.resolver';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Movie, MovieSchema } from './schema/movie.schema';
-import { MovieRatingModule } from 'src/movie-rating/movie-rating.module';
+import { MovieRatingModule } from '../movie-rating/movie-rating.module';
 
 @Module({
   imports: [

@@ -1,6 +1,6 @@
 import { Field, InputType } from '@nestjs/graphql';
 import { IsNotEmpty, IsString, Max, Min } from 'class-validator';
-import { IsObjectId } from 'src/common/decorator/is-object-id.decorator';
+import { IsObjectId } from '../../common/decorator/is-object-id.decorator';
 
 @InputType()
 export class UpdateMovieRatingInput {

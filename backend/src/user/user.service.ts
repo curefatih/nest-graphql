@@ -1,7 +1,7 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { CreateUserDto } from './dto/create-user.dto';
+import { CreateUserInput } from './dto/create-user.input';
 import { User, UserDocument } from './schema/user.schema';
 import * as bcrypt from 'bcrypt';
 import { LoginUserInput } from './dto/login-user.input';
@@ -14,7 +14,7 @@ export class UserService {
     private readonly authService: AuthService,
   ) {}
 
-  async createUser(userDto: CreateUserDto): Promise<User> {
+  async create(userDto: CreateUserInput): Promise<User> {
     const saltOrRounds = 10;
     const password = userDto.password;
     userDto.password = await bcrypt.hash(password, saltOrRounds);
@@ -26,8 +26,8 @@ export class UserService {
     return this.userModel.findOne({ email }).exec();
   }
 
-  async find(): Promise<User[]> {
-    return this.userModel.find().exec();
+  async findById(id: string): Promise<User> {
+    return this.userModel.findById(id).exec();
   }
 
   async loginUser(loginUserInput: LoginUserInput) {

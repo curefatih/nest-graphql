@@ -1,9 +1,9 @@
 import { Field, InputType } from '@nestjs/graphql';
 import { Type } from 'class-transformer';
-import { IsDate, IsDateString, IsNotEmpty, IsString } from 'class-validator';
+import { IsDate, IsNotEmpty, IsString } from 'class-validator';
 
 @InputType()
-export class CreateMovieDto {
+export class CreateMovieInput {
   @Field()
   @IsString()
   @IsNotEmpty()

@@ -1,11 +1,7 @@
-import {
-  BadRequestException,
-  Injectable,
-  NotFoundException,
-} from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import mongoose, { Model } from 'mongoose';
-import { CreateMovieDto } from './dto/create-movie.dto';
+import { CreateMovieInput } from './dto/create-movie.input';
 import { UpdateMovieInput } from './dto/update-movie.input';
 import { Movie, MovieDocument } from './schema/movie.schema';
 
@@ -15,7 +11,10 @@ export class MovieService {
     @InjectModel(Movie.name) private movieModel: Model<MovieDocument>,
   ) {}
 
-  async createMovie(ownerId: string, movieDto: CreateMovieDto): Promise<Movie> {
+  async createMovie(
+    ownerId: string,
+    movieDto: CreateMovieInput,
+  ): Promise<Movie> {
     const ownerObjectId = new mongoose.Types.ObjectId(ownerId);
 
     const movie = new this.movieModel({

@@ -1,8 +1,8 @@
 import { Field, ObjectType } from '@nestjs/graphql';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose from 'mongoose';
-import { MovieRating } from 'src/movie-rating/schema/movie-rating.schema';
-import { UserDocument } from 'src/user/schema/user.schema';
+import { MovieRating } from '../../movie-rating/schema/movie-rating.schema';
+import { UserDocument } from '../../user/schema/user.schema';
 
 export type MovieDocument = Movie & Document;
 

@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import mongoose, { Model } from 'mongoose';
-import { MovieService } from 'src/movie/movie.service';
+import { MovieService } from '../movie/movie.service';
 import { CreateMovieRatingInput } from './dto/create-movie-rating.input';
 import { UpdateMovieRatingInput } from './dto/update-movie-rating.input';
 import { MovieRating, MovieRatingDocument } from './schema/movie-rating.schema';

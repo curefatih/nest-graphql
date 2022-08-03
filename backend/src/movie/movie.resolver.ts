@@ -9,10 +9,10 @@ import {
 import {
   CurrentUser,
   CurrentUserPayload,
-} from 'src/common/decorator/current-user.decorator';
-import { ID } from 'src/common/gq-types/id.input';
-import { MovieRatingService } from 'src/movie-rating/movie-rating.service';
-import { CreateMovieDto } from './dto/create-movie.dto';
+} from '../common/decorator/current-user.decorator';
+import { ID } from '../common/gq-types/id.input';
+import { MovieRatingService } from '../movie-rating/movie-rating.service';
+import { CreateMovieInput } from './dto/create-movie.input';
 import { UpdateMovieInput } from './dto/update-movie.input';
 import { UpdateMovieOutput } from './dto/update-movie.output';
 import { MovieService } from './movie.service';
@@ -28,7 +28,7 @@ export class MovieResolver {
   @Mutation(() => Movie)
   async createMovie(
     @CurrentUser() user: CurrentUserPayload,
-    @Args('input') input: CreateMovieDto,
+    @Args('input') input: CreateMovieInput,
   ): Promise<Movie> {
     return this.movieService.createMovie(user.userId, input);
   }

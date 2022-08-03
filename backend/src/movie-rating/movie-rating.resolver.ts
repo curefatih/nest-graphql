@@ -2,7 +2,7 @@ import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import {
   CurrentUser,
   CurrentUserPayload,
-} from 'src/common/decorator/current-user.decorator';
+} from '../common/decorator/current-user.decorator';
 import { CreateMovieRatingInput } from './dto/create-movie-rating.input';
 import { DeleteMovieRatingInput } from './dto/delete-movie-rating.input';
 import { DeleteMovieRatingOutput } from './dto/delete-movie-rating.output';
